@@ -49,6 +49,7 @@ class model2048:
 			for gd in line:
 				if(gd!=0):
 					self.Score=self.Score+2**gd
+		return self.Score
 
 	def _Trun(self,x):
 		x=x%4
@@ -93,9 +94,33 @@ class model2048:
 				temp.append(0)
 			self.table[l]=deepcopy(temp)
 		self._Trun(4-directmap[direct])
-		self.Sprout()
+		if(sprout):
+			self.Sprout()
 		self.CalcScore()
+		return True
 
+def Move(model,direct):
+	model_ret=deepcopy(model)
+	model_ret.Move(direct,sprout=False)
+	return model_ret
+
+def AllSprout(model,gen={1:0.9,2:0.1}):
+	retlist=[]
+	empty_cnt=0
+	gen_sum=sum([gen[p] for p in gen])
+	for p in gen: gen[p]=gen[p]/gen_sum
+	for line in model.table:
+		for gd in line:
+			if(gd==0):
+				empty_cnt=empty_cnt+1
+	for x in range(len(model.table)):
+		for y in range(len(model.table[x])):
+			if(model.table[x][y]==0):
+				temp=deepcopy(model)
+				for g in gen:
+					temp.table[x][y]=p
+					retlist.append({'model':temp,'p':gen[p]*1.0/empty_cnt})
+	return retlist
 
 if(__name__=='__main__'):
 	model=model2048()
