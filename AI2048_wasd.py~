@@ -14,7 +14,3 @@ class AI2048_wasd:
 				self.model.Draw()
 			cnt=(cnt+1)%4
 		return self.model.CalcScore()
-
-if(__name__=='__main__'):
-	AI=AI2048_wasd(model2048.model2048())
-	AI.run()

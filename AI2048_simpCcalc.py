@@ -1,16 +1,22 @@
 import model2048
 
-class AI2048_simpCalcSpace:
+class AI2048_simpCcalc:
 	def __init__(self,model):
 		self.model=model
 		self.model.Init()
 	def CalcF(self,model):
 		emptycnt=0
-		for line in model.table:
-			for gd in line:
-				if(gd==0):
+		ret=0;
+		for x in range(4):
+			for y in range(4):
+				if(model.table[x][y]==0):
 					emptycnt=emptycnt+1
-		return model.CalcScore()+2**emptycnt
+				else:
+					k=1
+					if(x==0 or x==3): k=k*2
+					if(y==0 or y==3): k=k*2
+					ret=ret+k*(2**model.table[x][y])
+		return ret+2**emptycnt
 	def run(self,draw=True):
 		directs=['u','d','r','l']
 		while(not self.model.CheckEnd()):
@@ -33,5 +39,5 @@ class AI2048_simpCalcSpace:
 		return self.model.CalcScore()
 
 if(__name__=='__main__'):
-	AI=AI2048_simpCalcSpace(model2048.model2048())
+	AI=AI2048_simpCcalc(model2048.model2048())
 	AI.run()

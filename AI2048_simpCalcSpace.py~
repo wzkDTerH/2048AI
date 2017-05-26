@@ -33,5 +33,5 @@ class AI2048_simpCalcSpace:
 		return self.model.CalcScore()
 
 if(__name__=='__main__'):
-	AI=AI2048_simpCalcSpace(model2048.model2048())
+	AI=AI2048_simpCcalc(model2048.model2048())
 	AI.run()

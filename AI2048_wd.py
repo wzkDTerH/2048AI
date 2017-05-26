@@ -14,3 +14,7 @@ class AI2048_wd:
 				self.model.Draw()
 			cnt=(cnt+1)%2
 		return self.model.CalcScore()
+
+if(__name__=='__main__'):
+	AI=AI2048_wd(model2048.model2048())
+	AI.run()

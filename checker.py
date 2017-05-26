@@ -19,7 +19,7 @@ def main(N=100,args=[]):
 		it=float(N)/10
 		itcnt=0
 		for T in range(N):
-			if(T>itcnt):
+			if(T>=itcnt):
 				print "%d/%d  %0.2f%%"%(T,N,T*100.0/N)
 				itcnt=itcnt+it
 			AI2048=eval("%s.%s"%(AIname,AIname))
