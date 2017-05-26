@@ -14,17 +14,3 @@ class AI2048_wasd:
 				self.model.Draw()
 			cnt=(cnt+1)%4
 		return self.model.CalcScore()
-
-if(__name__=='__main__'):
-	N=100
-	sums,maxs,mins=0,0,0
-	for T in range(N):
-		AI=AI2048_wasd(model2048.model2048())
-		s=AI.run(False)
-		sums=sums+s
-		if(T==0):
-			mins,maxs=s,s
-		else:
-			mins=min(mins,s)
-			maxs=max(maxs,s)
-	print 'min:',mins,'max:',maxs,'avg:',sums*1.0/N

@@ -31,19 +31,3 @@ class AI2048_simpCalcSpace:
 		if(draw):
 			self.model.Draw()
 		return self.model.CalcScore()
-
-if(__name__=='__main__'):
-	N=100
-	sums,maxs,mins=0,0,0
-	for T in range(N):
-		if(T%(N/10)==0):
-			print "%d/%d"%(T,N)
-		AI=AI2048_simpCalcSpace(model2048.model2048())
-		s=AI.run(draw=False)
-		sums=sums+s
-		if(T==0):
-			mins,maxs=s,s
-		else:
-			mins=min(mins,s)
-			maxs=max(maxs,s)
-	print 'min:',mins,'max:',maxs,'avg:',sums*1.0/N
