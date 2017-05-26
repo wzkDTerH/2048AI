@@ -12,10 +12,10 @@ class AI2048_simpCcalc:
 				if(model.table[x][y]==0):
 					emptycnt=emptycnt+1
 				else:
-					k=1
+					k=2
 					if(x==0 or x==3): k=k*2
 					if(y==0 or y==3): k=k*2
-					ret=ret+k*(2**model.table[x][y])
+					ret=ret+k**model.table[x][y]
 		return ret+2**emptycnt
 	def run(self,draw=True):
 		directs=['u','d','r','l']
