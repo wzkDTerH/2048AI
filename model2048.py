@@ -23,6 +23,7 @@ class model2048:
 			for p in gen:
 				if(r<=gen[p]):
 					self.table[x][y]=p
+					self.Score=self.Score+2**p
 					break
 				r=r-gen[p]
 		self.CalcScore()
@@ -44,6 +45,7 @@ class model2048:
 		print "Score = ",self.Score
 
 	def CalcScore(self):
+		return self.Score
 		self.Score=0
 		for line in self.table:
 			for gd in line:
@@ -102,7 +104,13 @@ class model2048:
 def Move(model,direct):
 	model_ret=deepcopy(model)
 	model_ret.Move(direct,sprout=False)
-	return model_ret
+	change=False
+	for i in range(4):
+		for j in range(4):
+			if(model_ret.table[i][j]!=model.table[i][j]):
+				change=True
+				break
+	return model_ret,change
 
 def AllSprout(model,gen={1:0.9,2:0.1}):
 	retlist=[]

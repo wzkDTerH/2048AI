@@ -19,7 +19,8 @@ class AI2048_simpCalcSpace:
 			maxhope=0
 			maxhopedir='u'
 			for direct in directs:
-				model_=model2048.Move(self.model,direct)
+				model_,change=model2048.Move(self.model,direct)
+				if(not change): continue
 				AllSproutlist=model2048.AllSprout(model_)
 				hope=0
 				for pos in AllSproutlist:

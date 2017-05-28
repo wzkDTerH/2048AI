@@ -1,0 +1,2 @@
+model_checkpoint_path: "/media/wzkdterh/B82416E92416AA80/code/2048AI/nn_model/nn.ckpt"
+all_model_checkpoint_paths: "/media/wzkdterh/B82416E92416AA80/code/2048AI/nn_model/nn.ckpt"
