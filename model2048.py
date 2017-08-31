@@ -23,7 +23,6 @@ class model2048:
 			for p in gen:
 				if(r<=gen[p]):
 					self.table[x][y]=p
-					self.Score=self.Score+2**p
 					break
 				r=r-gen[p]
 		self.CalcScore()
@@ -33,24 +32,25 @@ class model2048:
 		self.Sprout(gen={1:1.0},cnt=2)
 
 	def Draw(self):
-		print '='*41
+		width=5
+		longlinelen=((width+2)*4+5)
+		print '='*longlinelen
 		for line in self.table:
 			print '|',
 			for gd in line:
 				if(gd==0):
-					print " "*7,'|',
+					print " "*width,'|',
 				else:
-					print "%7d"%(2**gd),'|',
-			print '\n','='*41
+					print eval("\"%%%dd |\"%%(2**gd)"%(width)),
+			print '\n','='*longlinelen
 		print "Score = ",self.Score
 
 	def CalcScore(self):
-		return self.Score
 		self.Score=0
 		for line in self.table:
 			for gd in line:
 				if(gd!=0):
-					self.Score=self.Score+2**gd
+					self.Score=self.Score+(gd-1)*(2**gd)
 		return self.Score
 
 	def _Trun(self,x):
